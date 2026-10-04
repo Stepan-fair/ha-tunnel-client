@@ -3,6 +3,7 @@ version: "0.3.0"
 slug: ha_tunnel_client
 description: Доступ к Home Assistant за CGNAT по одному коду подключения
 arch: [amd64]
+image: ghcr.io/stepan-fair/ha-tunnel-client-{arch}
 startup: application
 boot: auto
 init: false
