@@ -23,7 +23,8 @@ async def verify_tunnel_tls(credentials):
     context.minimum_version=ssl.TLSVersion.TLSv1_2
     _,writer=await asyncio.wait_for(asyncio.open_connection(
         credentials['tunnel_host'],credentials['tunnel_port'],ssl=context,
-        server_hostname=credentials['tunnel_host'],ssl_handshake_timeout=5),timeout=7)
+        server_hostname=credentials['tunnel_host'],ssl_handshake_timeout=5,
+        happy_eyeballs_delay=0.25,interleave=1),timeout=7)
     writer.close()
     await asyncio.wait_for(writer.wait_closed(),timeout=3)
 
